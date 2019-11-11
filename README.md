@@ -1,8 +1,3 @@
-TODO:
+Food delivery web app for customers to have food delivered to their address.
 
-Front end: Steven, HTML, CSS, Javascript
-Back end: Anthony, Python
-
-Food delivery app modelled after iFoods, UberEats.
-
-Only difference is personalized style, different features can also be added later.
+If used in real life it would be a competitor to current services like UberEats and iFoods.
