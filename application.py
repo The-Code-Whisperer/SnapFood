@@ -20,8 +20,8 @@ Session(app)
 
 
 # Configure CS50 Library to use SQLite database
-# db = SQL("sqlite:///registrants.db")
-db = SQL("postgres://jffgkbkvmuffmo:0a4ad2d618f23b90d4d4553b23183ab16caacf9e7e8424e43193e17d90d4133f@ec2-174-129-253-169.compute-1.amazonaws.com:5432/dfvtsevvlioth0")
+db = SQL("sqlite:///registrants.db")
+# db = SQL("postgres://jffgkbkvmuffmo:0a4ad2d618f23b90d4d4553b23183ab16caacf9e7e8424e43193e17d90d4133f@ec2-174-129-253-169.compute-1.amazonaws.com:5432/dfvtsevvlioth0")
 
 
 # Index route
