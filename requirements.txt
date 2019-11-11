@@ -1,0 +1,11 @@
+flask
+requests
+flask_session
+werkzeug
+cs50
+psycopg2
+psycopg2-binary
+dj-database-url
+django
+heroku
+django-heroku
