@@ -1,0 +1,10 @@
+flask
+functools
+requests
+urllib.parse
+os
+flask_session
+tempfile
+werkzeug.exceptions
+werkzeug.security
+cs50
