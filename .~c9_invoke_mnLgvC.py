@@ -44,10 +44,6 @@ def index():
 def test():
     return render_template("test.html")
 
-@app.route("/video")
-def video():
-    return render_template("video.html")
-
 # submitted location in search bar
 @app.route("/restaurants", methods=["GET", "POST"])
 def restaurants():
@@ -57,11 +53,15 @@ def restaurants():
         id = session["user_id"]
         username = db.execute("SELECT username FROM login WHERE id=:id", id=id)[0]["username"]
     if request.method == "POST":
+        # check for proper submission
         address = request.form.get("address")
-        if username:
-            return render_template("restaurants.html", username=username, address=address)
+        if not address:
+            return apology("Enter a location!")
         else:
-            return render_template("restaurants.html", address=address)
+            if username:
+                return render_template("restaurants.html", username=username, address=address)
+            else:
+                return render_template("restaurants.html", address=address)
     # if they just got to restaurants.html by accident
     else:
         if username:
@@ -148,17 +148,7 @@ def login():
         return render_template("login.html")
 
 
-@app.route("/profile", methods=["GET"])
-@login_required
-def profile():
-    return render_template("profile.html")
-
 @app.route("/logout")
 def logout():
     session.clear()
     return redirect("/")
-
-@app.errorhandler(404)
-def page_not_found(e):
-    # note that we set the 404 status explicitly
-    return render_template('404.html'), 404

@@ -1,0 +1,54 @@
+TODO:
+
+Front end: Steven, HTML, CSS, Javascript
+Back end: Anthony, Python
+
+Logo top left
+SnapFood
+Sign in on top right
+
+Search address in middle
+
+Background of front-page
+
+Front page nov 6
+nov 7 justify sign out, register, sign in buttons to the right. put image on background.
+
+Food delivery app modelled after iFoods, UberEats.
+
+Only difference is personalized style, different features can also be added later.
+
+**** 11/06 ****
+    Start of index page, background, navbar and login backend
+
+**** 11/07 ****
+    Fix relative src and href paths so we don't have to use foreign website links.
+    Put image in background, change background color, put address search bar in front of image
+    Put search bar in middle.
+    Move some navbar buttons to the right.
+    Improve login and register pages
+    Make restaurant results page with different cards in flexbox
+    Center the restaurant results.
+
+**** 11/08 ****
+    Finish the index front-page by adding some restaurants there
+    Add 404 page, reformat pages
+    CANCELLED Add Google Map
+
+**** 11/09 ****
+    CANCELLED Submitting search bar should show nearest restaurant results. Connect with Google API.
+    CANCELLED Implement Google Maps API completely
+    Modify index page.
+
+**** 11/10 ****
+    Fix restaurant cards.
+    Create some restaurant websites.
+    Turn each restaurant card into a clickable link to the restaurant website.
+    Download all work before pulling from Github (in case pulling erases local files).
+    Pull changes from github, merge with the work done locally, push onto github to save commits.
+    Restaurants slide in index page
+    Establish variety of set restaurants in restaurants.html
+    Make index page beautiful.
+    Make About page.
+    Make Explanation Video.
+    Fix Restaurant Register image and add button.
