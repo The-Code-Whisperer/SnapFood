@@ -1,9 +1,6 @@
 flask
 requests
-urllib.parse
-os
 flask_session
-tempfile
 werkzeug
 cs50
 psycopg2
