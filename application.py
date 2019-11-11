@@ -23,6 +23,10 @@ Session(app)
 # db = SQL("sqlite:///registrants.db")
 db = SQL("postgres://jffgkbkvmuffmo:0a4ad2d618f23b90d4d4553b23183ab16caacf9e7e8424e43193e17d90d4133f@ec2-174-129-253-169.compute-1.amazonaws.com:5432/dfvtsevvlioth0")
 
+#DATABASE_URL = os.environ['jffgkbkvmuffmo:0a4ad2d618f23b90d4d4553b23183ab16caacf9e7e8424e43193e17d90d4133f@ec2-174-129-253-169.compute-1.amazonaws.com:5432/dfvtsevvlioth0']
+
+
+#conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 # Index route
 @app.route("/", methods=["GET", "POST"])

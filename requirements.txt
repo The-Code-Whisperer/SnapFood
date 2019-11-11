@@ -5,6 +5,11 @@ urllib.parse
 os
 flask_session
 tempfile
-werkzeug.exceptions
-werkzeug.security
+werkzeug
 cs50
+psycopg2
+psycopg2-binary
+dj-database-url
+django
+heroku
+django-heroku
