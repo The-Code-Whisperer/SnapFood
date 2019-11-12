@@ -49,6 +49,10 @@ def index():
 def test():
     return render_template("test.html")
 
+@app.route("/pre_check")
+def pre_check():
+    return render_template("pre_check.html")
+
 @app.route("/video")
 def video():
     return render_template("video.html")
@@ -73,6 +77,26 @@ def restaurants():
             return render_template("restaurants.html", username=username)
         else:
             return render_template("restaurants.html")
+
+
+@app.route("/cora", methods=["GET", "POST"])
+def cora():
+    return render_template("cora.html")
+
+
+@app.route("/stormcrowmanor", methods=["GET", "POST"])
+def stormcrowmanor():
+    return render_template("stormcrowmanor.html")
+
+
+@app.route("/thekeg", methods=["GET", "POST"])
+def thekeg():
+    return render_template("thekeg.html")
+
+@app.route("/checkout", methods=["GET", "POST"])
+
+def checkout():
+    return render_template("checkout.html")
 
 
 # if registered, go to index.html with welcome message

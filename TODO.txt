@@ -1,8 +1,5 @@
 TODO:
 
-Front end: Steven, HTML, CSS, Javascript
-Back end: Anthony, Python
-
 Logo top left
 SnapFood
 Sign in on top right
@@ -19,38 +16,45 @@ Food delivery app modelled after iFoods, UberEats.
 Only difference is personalized style, different features can also be added later.
 
 **** 11/06 ****
-    Start of index page, background, navbar and login backend
+    << OK >>          Start of index page, background, navbar and login backend
 
 **** 11/07 ****
-    Fix relative src and href paths so we don't have to use foreign website links.
-    Put image in background, change background color, put address search bar in front of image
-    Put search bar in middle.
-    Move some navbar buttons to the right.
-    Improve login and register pages
-    Make restaurant results page with different cards in flexbox
-    Center the restaurant results.
+    << OK >>          Fix relative src and href paths so we don't have to use foreign website links.
+    << OK >>          Put image in background, change background color, put address search bar in front of image
+    << OK >>          Put search bar in middle.
+    << OK >>          Move some navbar buttons to the right.
+    << OK >>          Improve login and register pages
+    << OK >>          Make restaurant results page with different cards in flexbox
+    << CANCELLED >>   Center the restaurant results.
 
 **** 11/08 ****
-    Finish the index front-page by adding some restaurants there
-    Add 404 page, reformat pages
-    CANCELLED Add Google Map
+    >> CANCELLED <<   Finish the index front-page by adding some restaurants there
+    >> OK <<          Add 404 page, reformat pages
+    >> CANCELLED <<   Add Google Map
 
 **** 11/09 ****
-    CANCELLED Submitting search bar should show nearest restaurant results. Connect with Google API.
-    CANCELLED Implement Google Maps API completely
-    Modify index page.
+    >> CANCELLED <<   Submitting search bar should show nearest restaurant results. Connect with Google API.
+    >> CANCELLED <<   Implement Google Maps API completely
+    >> OK <<          Modify index page.
 
 **** 11/10 ****
-    Change restaurant card shade from blue to black.
-    Make set restaurants in restaurants.html
-    Download all work before pulling from Github (in case pulling erases local files).
-    Pull changes from Github, merge with the work done locally, push onto Github to save commits.
-    Make sliding restaurant menu page.
+    >> OK <<          Change restaurant card shade from blue to black.
+    >> OK <<          Make set restaurants in restaurants.html
+    >> OK <<          Download all work before pulling from Github (in case pulling erases local files).
+    >> OK <<          Pull changes from Github, merge with the work done locally, push onto Github to save commits.
+    >> OK <<          Make sliding restaurant menu page.
 
 **** 11/11 ****
-    Turn each restaurant card into a clickable link to the restaurant website.
-    Format index page.
+    >> OK <<          Turn each restaurant card into a clickable link to the restaurant website. >> NEEDS INCREASEMENT <<
+    >> OK <<          Format index page.
+    >> REDIRECTED TO ANOTHER DAY << Make About page.
+    >> REDIRECTED TO ANOTHER DAY << Make Explanation Video.
+    >> OK <<          Fix Restaurant Register image and add button.
+    >> OK <<          Create restaurant menu websites.
+
+**** 11/12 ****
+    Finish all restaurant websites.
     Make About page.
     Make Explanation Video.
-    Fix Restaurant Register image and add button.
-    Create restaurant menu websites.
+    Confirm order/pre-checkout page.
+    Pay/checkout page.
