@@ -39,10 +39,10 @@ def index():
         return render_template("index.html")
 
 
-# find place request returning json value of search results
-# https://maps.googleapis.com/maps/api/place/findplacefromtext/output?parameters
-# example find place request for "mongolian grill"
-# https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=mongolian%20grill&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:2000@47.6918452,-122.2226413&key=YOUR_API_KEY
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
 
 # test page
 @app.route("/test")

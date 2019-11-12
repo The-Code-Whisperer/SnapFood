@@ -53,8 +53,8 @@ Only difference is personalized style, different features can also be added late
     >> OK <<          Create restaurant menu websites.
 
 **** 11/12 ****
-    Finish all restaurant websites.
+    >> OK <<          Finish all restaurant websites.
     Make About page.
-    Make Explanation Video.
-    Confirm order/pre-checkout page.
-    Pay/checkout page.
+    Make Presentation Video.
+    Make sure user is logged in in the Confirm order/pre-checkout page. Need email, and (fake) phone number.
+    Pay/checkout page. When checked out, email will be sent.
