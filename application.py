@@ -8,6 +8,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from cs50 import SQL
 
 from helpers import apology, login_required
+import smtplib
 
 # Configure application
 app = Flask(__name__, static_url_path="/static")
@@ -25,8 +26,16 @@ db = SQL("sqlite:///registrants.db")
 
 #DATABASE_URL = os.environ['jffgkbkvmuffmo:0a4ad2d618f23b90d4d4553b23183ab16caacf9e7e8424e43193e17d90d4133f@ec2-174-129-253-169.compute-1.amazonaws.com:5432/dfvtsevvlioth0']
 
-
 #conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
+def login_helper():
+    rows = db.execute("SELECT * FROM login WHERE username=:username",
+                      username=request.form.get("username"))
+    session["user_id"] = rows[0]["id"]
+    session["email"] = rows[0]["email"]
+    session["address"] = rows[0]["address"]
+    session["phone"] = rows[0]["phone"]
+    return None
 
 # Index route
 @app.route("/", methods=["GET", "POST"])
@@ -42,6 +51,24 @@ def index():
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+
+@app.route("/success")
+@login_required
+def success():
+    id = session["user_id"]
+    name = request.form.get("name")
+    email = db.execute("SELECT email FROM login WHERE id=?", id)
+    address = session["address"]
+    if not id or not email or not address:
+        return apology("Please go back and login.")
+    message = f"Your order is being delivered to {address}."
+    server = smtplib.SMTP("smtp.gmail.com", 587)
+    server.starttls()
+    server.login("snapfoodbusiness@gmail.com", "Snapfood!1")
+    server.sendmail("snapfoodbusiness@gmail.com", email, message)
+    server.sendmail("snapfoodbusiness@gmail.com", "snapfoodbusiness@gmail.com", f"Customer {name} at {address} and phone: {phone} has ordered 1x Keg Caesar, 1x Prime Rib, 1x Sparkling Water for $51.00!")
+    return render_template("success.html", email=email)
 
 
 # test page
@@ -67,6 +94,7 @@ def restaurants():
         username = db.execute("SELECT username FROM login WHERE id=:id", id=id)[0]["username"]
     if request.method == "POST":
         address = request.form.get("address")
+        session['address'] = address
         if username:
             return render_template("restaurants.html", username=username, address=address)
         else:
@@ -94,7 +122,7 @@ def thekeg():
     return render_template("thekeg.html")
 
 @app.route("/checkout", methods=["GET", "POST"])
-
+@login_required
 def checkout():
     return render_template("checkout.html")
 
@@ -104,6 +132,10 @@ def checkout():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """Register user"""
+    # if already logged in it means they clicked on "Deliver now" in restaurant, so
+    # redirect to /restaurants
+    if session:
+        return redirect("/restaurants")
     # Query database for username
     rows = db.execute("SELECT * FROM login")
     # If form was posted
@@ -121,21 +153,25 @@ def register():
         elif db.execute("SELECT * FROM login WHERE username=:username",
                         username=request.form.get("username")):
             return apology("Username taken.")
+        # if address, email, phone do not exist or wrong format.
+        if not request.form.get("address") or not request.form.get("email") or not request.form.get("phone"):
+            return apology("Please fill out the form fully.")
         # register the new user
         else:
+            address = request.form.get("address")
+            email = request.form.get("email")
+            phone = request.form.get("phone")
             # hash password before storing using pwd_context.encrypt
             hash = generate_password_hash(request.form.get("password"))
             # add user to database
-            result = db.execute("INSERT INTO login (username, hash) VALUES(:username, :hash)",
-                                username=request.form.get("username"), hash=hash)
+            result = db.execute("INSERT INTO login (username, hash, email, address, phone) VALUES(?, ?, ?, ?, ?)",
+                                request.form.get("username"), hash, email, address, phone)
             # this error should not happen because we already checked to make sure
             # it is a unique username, but if it does, return a database error.
             if not result:
                 return apology("Database error.")
             # login user automatically after registering
-            rows = db.execute("SELECT * FROM login WHERE username=:username",
-                              username=request.form.get("username"))
-            session["user_id"] = rows[0]["id"]
+            login_helper()
 
             # pop-up message of registration
             flash("Registered!")
@@ -169,7 +205,7 @@ def login():
             return apology("invalid username and/or password", 403)
 
         # Remember which user has logged in
-        session["user_id"] = rows[0]["id"]
+        login_helper()
 
         # Redirect user to home page
         return redirect("/")
