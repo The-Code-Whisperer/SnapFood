@@ -56,18 +56,6 @@ def about():
 @app.route("/success")
 @login_required
 def success():
-    id = session["user_id"]
-    name = request.form.get("name")
-    email = db.execute("SELECT email FROM login WHERE id=?", id)
-    address = session["address"]
-    if not id or not email or not address:
-        return apology("Please go back and login.")
-    message = f"Your order is being delivered to {address}."
-    server = smtplib.SMTP("smtp.gmail.com", 587)
-    server.starttls()
-    server.login("snapfoodbusiness@gmail.com", "Snapfood!1")
-    server.sendmail("snapfoodbusiness@gmail.com", email, message)
-    server.sendmail("snapfoodbusiness@gmail.com", "snapfoodbusiness@gmail.com", f"Customer {name} at {address} and phone: {phone} has ordered 1x Keg Caesar, 1x Prime Rib, 1x Sparkling Water for $51.00!")
     return render_template("success.html", email=email)
 
 
