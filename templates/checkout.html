@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<title>Snapfood - Checkout</title>
+<link href="https://fonts.googleapis.com/css?family=Overpass:200,400,700" rel="stylesheet">
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=_Ys4Iva1QklA0g60Zh30otGgj297BNR8uvjGplDzamkZFrxoXFwNASXztWP2Bd3sjgfXwdL6ZMfHJYeg5b_fAg" charset="UTF-8"></script><style>
+  * {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+body {
+  margin: 0;
+  font-family: 'Overpass';
+}
+h1 {
+  margin-top: 0;
+  font-weight: 700;
+}
+h4 {
+  margin-top: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(242,249,255,0.5);
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 0.0625rem, #fff 0.0625rem, #fff 0.25rem);
+}
+main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.container {
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+}
+@media screen and (max-width: 68rem) {
+  .container {
+    display: block;
+  }
+}
+form {
+  margin-left: 2rem;
+  padding: 1.5rem;
+  max-width: 100%;
+  width: 32rem;
+  border: 0.0625rem solid #bfbfbf;
+  background-color: #fff;
+  -webkit-animation: slideUp 1s ease both, fadeIn 1s ease both;
+          animation: slideUp 1s ease both, fadeIn 1s ease both;
+}
+@media screen and (max-width: 68rem) {
+  form {
+    margin: 2rem auto 0 auto;
+  }
+}
+form .row .group {
+  width: auto;
+}
+form .row .group:first-child {
+  min-width: 12rem;
+  padding-right: 0.5rem;
+}
+@media screen and (max-width: 345px) {
+  form .row .group:first-child {
+    padding-right: 0;
+    min-width: 100%;
+  }
+}
+form .row .group:last-child {
+  padding-left: 0.5rem;
+}
+@media screen and (max-width: 345px) {
+  form .row .group:last-child {
+    padding-left: 0;
+  }
+}
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+label:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.25rem;
+  width: 0.25rem;
+  height: 1rem;
+  background-color: #bfdfff;
+}
+input,
+button {
+  width: 100%;
+  font-size: 1rem;
+}
+input {
+  display: block;
+  padding: 0.5rem;
+  border: 0.0625rem solid #bfbfbf;
+  text-transform: uppercase;
+  background-color: #fff;
+}
+input[id='card-cvv'] {
+  width: 3.25rem;
+}
+a,
+button {
+  display: inline-block;
+  cursor: pointer;
+  padding: 1rem;
+  color: #fff;
+  background-color: #0080ff;
+  border: none;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+a:focus,
+button:focus,
+a:hover,
+button:hover {
+  background-color: #40a0ff;
+}
+a:active,
+button:active {
+  background-color: #80c0ff;
+}
+select {
+  display: block;
+  padding: 0.5rem;
+  width: 50%;
+  height: 2.375rem;
+  background-color: #fff;
+  font-size: 1rem;
+  border: 0.0625rem solid #bfbfbf;
+}
+select:first-child {
+  margin-right: 0.25rem;
+}
+select:last-child {
+  margin-left: 0.25rem;
+}
+.group {
+  margin-top: 1rem;
+}
+.group .validity {
+  display: flex;
+}
+.card {
+  position: relative;
+  max-width: 100%;
+  width: 32rem;
+  padding-bottom: 63.0607477%;
+  contain: strict;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-animation: slideDown 1s ease both, fadeIn 1s ease both;
+          animation: slideDown 1s ease both, fadeIn 1s ease both;
+}
+.card.processing {
+  -webkit-animation: processing 3s ease both;
+          animation: processing 3s ease both;
+}
+.card.complete {
+  -webkit-animation: complete 1s ease both;
+          animation: complete 1s ease both;
+}
+.back,
+.front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-flow: column;
+  align-content: flex-end;
+  padding: 1.5rem;
+  width: 100%;
+  height: calc(100% - 2px);
+  border-radius: 0.25rem;
+  border: 0.0625rem solid #80c0ff;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  overflow: hidden;
+  background-color: #fff;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+}
+.back.active,
+.front.active {
+  -webkit-transform: rotateX(0);
+          transform: rotateX(0);
+}
+.back {
+  padding: 0;
+}
+.decoration {
+  z-index: -1;
+}
+.front .decoration span:nth-child(1) {
+  position: absolute;
+  bottom: 8rem;
+  left: -20rem;
+  width: 50rem;
+  height: 50rem;
+  border: 0.0625rem solid #bfdfff;
+  border-radius: 50%;
+}
+.front .decoration span:nth-child(2) {
+  position: absolute;
+  bottom: 5rem;
+  right: -35rem;
+  width: 50rem;
+  height: 50rem;
+  border: 0.0625rem solid #bfdfff;
+  border-radius: 50%;
+}
+.front .decoration span:nth-child(3) {
+  position: absolute;
+  top: 8rem;
+  right: -30rem;
+  width: 50rem;
+  height: 50rem;
+  border: 0.0625rem solid #bfdfff;
+  border-radius: 50%;
+}
+.back .decoration span:nth-child(1) {
+  position: absolute;
+  bottom: 8rem;
+  right: -20rem;
+  width: 50rem;
+  height: 50rem;
+  border: 0.0625rem solid #bfdfff;
+  border-radius: 50%;
+}
+.back .decoration span:nth-child(2) {
+  position: absolute;
+  bottom: 5rem;
+  left: -35rem;
+  width: 50rem;
+  height: 50rem;
+  border: 0.0625rem solid #bfdfff;
+  border-radius: 50%;
+}
+.back .decoration span:nth-child(3) {
+  position: absolute;
+  top: 8rem;
+  left: -30rem;
+  width: 50rem;
+  height: 50rem;
+  border: 0.0625rem solid #bfdfff;
+  border-radius: 50%;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.row + .row {
+  margin-top: 0.25rem;
+}
+@media screen and (max-width: 34rem) {
+  .row + .row {
+    margin-top: 0;
+  }
+}
+.type {
+  margin-bottom: auto;
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: 200;
+}
+@media screen and (max-width: 34rem) {
+  .type {
+    font-size: calc(1.25rem + 0.46875vw - 2.5px);
+  }
+}
+.chip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  width: 4rem;
+  height: 2.75rem;
+  border-radius: 0.25rem;
+  border: 0.0625rem solid #40a0ff;
+  background-color: #f2f9ff;
+  overflow: hidden;
+  text-align: center;
+}
+@media screen and (max-width: 34rem) {
+  .chip {
+    margin-bottom: 5%;
+    width: 12.5%;
+    height: 15%;
+  }
+}
+.chip span {
+  display: inline-block;
+  border: 0.0625rem solid #80c0ff;
+}
+.chip span:nth-child(1),
+.chip span:nth-child(3) {
+  position: relative;
+  flex-shrink: 0;
+  width: 50%;
+  height: 50%;
+  border-radius: 0.25rem;
+  background-color: inherit;
+}
+.chip span:nth-child(1) {
+  left: 0.25rem;
+}
+.chip span:nth-child(2) {
+  flex-shrink: 0;
+  width: 50%;
+  height: 110%;
+  border-radius: 50%;
+}
+.chip span:nth-child(3) {
+  right: 0.25rem;
+}
+.number {
+  font-size: 1.5rem;
+}
+@media screen and (max-width: 34rem) {
+  .number {
+    font-size: calc(1rem + 0.46875vw - 1.5px);
+  }
+}
+.info {
+  position: relative;
+  z-index: 1;
+  margin-top: 0.25rem;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.expiration {
+  display: block;
+}
+.date {
+  font-size: 1.25rem;
+}
+@media screen and (max-width: 34rem) {
+  .date {
+    font-size: calc(0.85rem + 0.46875vw - 1.5px);
+  }
+}
+.label {
+  font-size: 0.65rem;
+  font-weight: 200;
+}
+@media screen and (max-width: 34rem) {
+  .label {
+    font-size: calc(0.5rem + 0.46875vw - 1.5px);
+  }
+}
+.name {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+@media screen and (max-width: 34rem) {
+  .name {
+    font-size: calc(0.85rem + 0.46875vw - 1.5px);
+  }
+}
+.flag {
+  position: relative;
+  margin-bottom: 0.75rem;
+  width: 25%;
+  padding-bottom: 12.5%;
+}
+.flag span {
+  content: '';
+  position: absolute;
+  width: 50%;
+  padding-bottom: 50%;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+}
+.flag span:before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+}
+.flag span:first-child {
+  top: 0;
+  left: 0;
+  margin-left: 25%;
+  background-color: rgba(255,85,85,0.25);
+}
+.flag span:first-child:before {
+  background-color: #f55;
+}
+.flag span:last-child {
+  top: 0;
+  right: 0;
+  background-color: #fe5;
+}
+.flag span:last-child:before {
+  background-color: rgba(255,238,85,0.25);
+}
+.band {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 7.5%;
+  background-color: #80c0ff;
+}
+.cvv {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin: 1.5rem;
+  max-width: 20rem;
+  width: 75%;
+  border: 0.0625rem solid #40a0ff;
+  background-color: #fff;
+}
+.cvv:before {
+  content: '';
+  display: inline-block;
+  flex: 1;
+  padding: 7.5%;
+  border-right: 0.0625rem solid #bfdfff;
+  background-color: #bfdfff;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 0.0625rem, #fff 0.0625rem, #fff 0.25rem);
+}
+.cvv span {
+  padding: 0 0.75rem;
+  flex-shrink: 0;
+  width: 3.25rem;
+  text-align: center;
+}
+.default {
+  color: #bfbfbf;
+}
+.payment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 2rem;
+  padding: 2rem;
+  max-width: 100%;
+  width: 20rem;
+  height: 12rem;
+  border: 0.0625rem solid #bfbfbf;
+  background-color: #fff;
+  text-align: center;
+  -webkit-animation: slideUp 1s ease both, fadeIn 1s ease both;
+          animation: slideUp 1s ease both, fadeIn 1s ease both;
+}
+@media screen and (max-width: 68rem) {
+  .payment {
+    margin: 2rem auto 0 auto;
+  }
+}
+.loader {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  width: 2rem;
+  height: 1rem;
+}
+.loader span {
+  width: 0.75rem;
+  height: 0.25rem;
+}
+.loader span:nth-child(1) {
+  -webkit-transform: rotate(-30deg) scaleX(1.25);
+          transform: rotate(-30deg) scaleX(1.25);
+  background-color: #0080ff;
+  -webkit-animation: load 1s ease both infinite;
+          animation: load 1s ease both infinite;
+}
+.loader span:nth-child(2) {
+  -webkit-transform: rotate(30deg) scaleX(1.25);
+          transform: rotate(30deg) scaleX(1.25);
+  background-color: #40a0ff;
+  -webkit-animation: load 1s 0.25s ease both infinite;
+          animation: load 1s 0.25s ease both infinite;
+}
+.loader span:nth-child(3) {
+  -webkit-transform: rotate(-30deg) scaleX(1.25);
+          transform: rotate(-30deg) scaleX(1.25);
+  background-color: #80c0ff;
+  -webkit-animation: load 1s 0.5s ease both infinite;
+          animation: load 1s 0.5s ease both infinite;
+}
+.trying,
+.success {
+  -webkit-animation: slideUp 0.5s ease both, fadeIn 0.5s ease both;
+          animation: slideUp 0.5s ease both, fadeIn 0.5s ease both;
+}
+.process {
+  position: relative;
+}
+.machine {
+  position: absolute;
+  z-index: 2;
+  top: -50%;
+  left: calc(50% - 8rem);
+  width: 16rem;
+  height: 22rem;
+  -webkit-transform: translateY(-150%);
+          transform: translateY(-150%);
+  transition: -webkit-transform 1s ease;
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 1s ease;
+}
+.machine:after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: calc(50% - 6rem);
+  width: 12rem;
+  height: 0;
+  box-shadow: 1px 1px 4px 1px rgba(0,128,255,0.5);
+  opacity: 0;
+}
+.machine.active {
+  -webkit-transform: translateY(-75%);
+          transform: translateY(-75%);
+}
+.machine.active:after {
+  -webkit-animation: blink 1s 2s ease both 3;
+          animation: blink 1s 2s ease both 3;
+}
+.machine.active.complete {
+  -webkit-transform: translateY(-150%);
+          transform: translateY(-150%);
+}
+.body {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  padding: 2rem;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  border: 0.0625rem solid #0080ff;
+  background-color: #fff;
+}
+.visor {
+  position: relative;
+  padding: 3rem;
+  width: 100%;
+}
+.screen {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  border: 0.0625rem solid #0080ff;
+  background-color: #fff;
+}
+.keypad {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 1rem;
+}
+.keypad span {
+  flex: 1 0 auto;
+  margin: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.25rem;
+  border: 0.0625rem solid #0080ff;
+}
+.keypad span:nth-last-child(-n+3) {
+  margin-top: 1.25rem;
+}
+.keypad span:nth-last-child(3) {
+  background-color: #f55;
+  border-color: #f55;
+}
+.keypad span:nth-last-child(2) {
+  background-color: #ffd700;
+  border-color: #ffd700;
+}
+.keypad span:nth-last-child(1) {
+  background-color: #5f5;
+  border-color: #5f5;
+}
+.check {
+  position: relative;
+  margin: 0 auto;
+  margin-top: 23px;
+  width: 1rem;
+  height: 1rem;
+}
+.check:before {
+  content: '';
+  position: absolute;
+  top: -0.75rem;
+  left: -0.75rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 0.25rem solid #0080ff;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  transition: 0.25s ease;
+  -webkit-animation: scaleDown 1s 0.5s ease both, fadeIn 1s 0.5s ease both;
+          animation: scaleDown 1s 0.5s ease both, fadeIn 1s 0.5s ease both;
+}
+.check span {
+  position: absolute;
+  width: 0.25rem;
+}
+.check span:first-child {
+  bottom: -0.225rem;
+  left: -0.25rem;
+  height: 0.75rem;
+  background-color: #40a0ff;
+  -webkit-transform-origin: 0% 0%;
+          transform-origin: 0% 0%;
+  -webkit-transform: rotate(-45deg) scaleY(0);
+          transform: rotate(-45deg) scaleY(0);
+  -webkit-animation: check-1 1s 1s ease both;
+          animation: check-1 1s 1s ease both;
+}
+.check span:last-child {
+  bottom: 0.125rem;
+  left: 0.25rem;
+  height: 1.25rem;
+  background-color: #80c0ff;
+  -webkit-transform-origin: 0% 100%;
+          transform-origin: 0% 100%;
+  -webkit-transform: rotate(45deg) scaleY(0);
+          transform: rotate(45deg) scaleY(0);
+  -webkit-animation: check-2 1s 1s ease both;
+          animation: check-2 1s 1s ease both;
+}
+@-webkit-keyframes processing {
+  50% {
+    -webkit-transform: scale(0.5) rotate(90deg) translateX(-10rem);
+            transform: scale(0.5) rotate(90deg) translateX(-10rem);
+  }
+  75%, 100% {
+    -webkit-transform: scale(0.5) rotate(90deg) translateX(-30rem);
+            transform: scale(0.5) rotate(90deg) translateX(-30rem);
+  }
+}
+@keyframes processing {
+  50% {
+    -webkit-transform: scale(0.5) rotate(90deg) translateX(-10rem);
+            transform: scale(0.5) rotate(90deg) translateX(-10rem);
+  }
+  75%, 100% {
+    -webkit-transform: scale(0.5) rotate(90deg) translateX(-30rem);
+            transform: scale(0.5) rotate(90deg) translateX(-30rem);
+  }
+}
+@-webkit-keyframes complete {
+  0% {
+    -webkit-transform: scale(0.5) rotate(90deg) translateX(-30rem);
+            transform: scale(0.5) rotate(90deg) translateX(-30rem);
+  }
+  50% {
+    -webkit-transform: scale(0.5) rotate(90deg) translateX(-10rem);
+            transform: scale(0.5) rotate(90deg) translateX(-10rem);
+  }
+  to {
+    -webkit-transform: scale(1) rotate(0) translateX(0);
+            transform: scale(1) rotate(0) translateX(0);
+  }
+}
+@keyframes complete {
+  0% {
+    -webkit-transform: scale(0.5) rotate(90deg) translateX(-30rem);
+            transform: scale(0.5) rotate(90deg) translateX(-30rem);
+  }
+  50% {
+    -webkit-transform: scale(0.5) rotate(90deg) translateX(-10rem);
+            transform: scale(0.5) rotate(90deg) translateX(-10rem);
+  }
+  to {
+    -webkit-transform: scale(1) rotate(0) translateX(0);
+            transform: scale(1) rotate(0) translateX(0);
+  }
+}
+@-webkit-keyframes blink {
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes scaleDown {
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes scaleDown {
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@-webkit-keyframes check-1 {
+  25%, 100% {
+    -webkit-transform: rotate(-45deg) scaleY(1);
+            transform: rotate(-45deg) scaleY(1);
+  }
+}
+@keyframes check-1 {
+  25%, 100% {
+    -webkit-transform: rotate(-45deg) scaleY(1);
+            transform: rotate(-45deg) scaleY(1);
+  }
+}
+@-webkit-keyframes check-2 {
+  25% {
+    -webkit-transform: rotate(45deg) scaleY(0);
+            transform: rotate(45deg) scaleY(0);
+  }
+  50%, 100% {
+    -webkit-transform: rotate(45deg) scaleY(1);
+            transform: rotate(45deg) scaleY(1);
+  }
+}
+@keyframes check-2 {
+  25% {
+    -webkit-transform: rotate(45deg) scaleY(0);
+            transform: rotate(45deg) scaleY(0);
+  }
+  50%, 100% {
+    -webkit-transform: rotate(45deg) scaleY(1);
+            transform: rotate(45deg) scaleY(1);
+  }
+}
+@-webkit-keyframes load {
+  50% {
+    opacity: 0.25;
+  }
+}
+@keyframes load {
+  50% {
+    opacity: 0.25;
+  }
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes slideUp {
+  from {
+    -webkit-transform: translateY(2rem);
+            transform: translateY(2rem);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+@keyframes slideUp {
+  from {
+    -webkit-transform: translateY(2rem);
+            transform: translateY(2rem);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+@-webkit-keyframes slideDown {
+  from {
+    -webkit-transform: translateY(-2rem);
+            transform: translateY(-2rem);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+@keyframes slideDown {
+  from {
+    -webkit-transform: translateY(-2rem);
+            transform: translateY(-2rem);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+</style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+
+<h1 style="padding: 50px; margin-top: 8px; font-style: italic;">Snapfood</h1>
+
+
+<section>
+<main id="checkout"></main>
+</section>
+
+<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js'></script>
+<script id="rendered-js">
+      class Card extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      React.createElement("div", {
+        className: `card ${this.props.processing ? 'processing' : ''} ${this.props.complete ? 'complete' : ''}` },
+
+      React.createElement("div", { className: `back ${this.props.flipped ? 'active' : ''}` },
+      React.createElement("div", { className: "decoration" },
+      React.createElement("span", null),
+      React.createElement("span", null),
+      React.createElement("span", null)),
+
+      React.createElement("div", { className: "band" }),
+      React.createElement("div", { className: "cvv" },
+      this.props.fields.cvv.length > 0 ?
+      React.createElement("span", null, this.props.fields.cvv) :
+      React.createElement("span", { className: "default" }, "123"))),
+
+
+
+      React.createElement("div", { className: `front ${this.props.flipped ? '' : 'active'}` },
+      React.createElement("div", { className: "decoration" },
+      React.createElement("span", null),
+      React.createElement("span", null),
+      React.createElement("span", null)),
+
+      React.createElement("div", { className: "type" }, "CREDIT CARD"),
+      React.createElement("div", { className: "chip" },
+      React.createElement("span", null), React.createElement("span", null), React.createElement("span", null)),
+
+      React.createElement("div", { className: "row info" },
+      React.createElement("div", null,
+      React.createElement("div", { className: "row number" },
+      this.props.fields.number.length > 0 ?
+      React.createElement("span", null, this.props.fields.number) :
+      React.createElement("span", { className: "default" }, "0000 0000 0000 0000")),
+
+
+      React.createElement("div", { className: "row expiration" },
+      React.createElement("div", { className: "label" }, "VALID THRU"),
+      React.createElement("div", { className: "date" },
+      this.props.fields.month.length > 0 ?
+      React.createElement("span", null, this.props.fields.month) :
+      React.createElement("span", { className: "default" }, "01"),
+
+      this.props.fields.month.length > 0 && this.props.fields.year.length > 0 ?
+      React.createElement("span", null, "/") :
+      React.createElement("span", { className: "default" }, "/"),
+
+      this.props.fields.year.length > 0 ?
+      React.createElement("span", null, this.props.fields.year) :
+      React.createElement("span", { className: "default" }, "17"))),
+
+
+
+      React.createElement("div", { className: "row name" },
+      this.props.fields.name.length > 0 ?
+      React.createElement("span", null, this.props.fields.name) :
+      React.createElement("span", { className: "default" }, "PAUL M ATREIDES"))),
+
+
+
+      React.createElement("div", { className: "flag" }, React.createElement("span", null), React.createElement("span", null))))));
+
+
+
+
+  }}
+
+
+class Form extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: false };
+
+  }
+
+  flip(bool) {
+    this.props.onFlip(bool);
+  }
+
+  handleSubmit(event) {
+    document.activeElement.blur();
+    event.preventDefault();
+
+    this.props.onFormSubmit();
+  }
+
+  format(type, input, event) {
+    let value = input.value.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
+
+    switch (type) {
+      case 'card-number':
+        value = value.replace(/\D/g, '');
+        input.value = value.replace(/([0-9]{4})\B/g, '$1 ');
+
+        if (input.value != value) {
+          setTimeout(() => input.setSelectionRange(input.value.length + 1, input.value.length + 1), 0);
+        }
+
+        this.props.onFormInput({ number: input.value });
+        break;
+
+      case 'card-name':
+        input.value = value.replace(/\d*/g, '');
+        this.props.onFormInput({ name: input.value });
+        break;
+
+      case 'card-month':
+        this.props.onFormInput({ month: input[input.selectedIndex].value });
+        break;
+
+      case 'card-year':
+        this.props.onFormInput({ year: input[input.selectedIndex].value });
+        break;
+
+      case 'card-cvv':
+        input.value = value.replace(/\D/g, '');
+        this.props.onFormInput({ cvv: input.value });
+        break;}
+
+  }
+
+  render() {
+    return (
+      React.createElement("div", null,
+      !this.props.processing ?
+
+      React.createElement("form", {
+        ref: form => this.form = form,
+        onSubmit: this.handleSubmit.bind(this) },
+
+      React.createElement("div", { className: "details" },
+      React.createElement("h1", null, "Payment details"),
+      React.createElement("div", { className: "group" },
+      React.createElement("label", { htmlFor: "card-number" }, "CARD NUMBER"),
+      React.createElement("input", {
+        type: "text",
+        id: "card-number",
+        placeholder: "0000 0000 0000 0000",
+        pattern: "[0-9]{4}\\s[0-9]{4}\\s[0-9]{4}\\s[0-9]{4}",
+        maxLength: "19",
+        ref: input => this.cardNumber = input,
+        onInput: event => this.format('card-number', this.cardNumber, event),
+        onFocus: () => this.flip(false),
+        required: true })),
+
+
+      React.createElement("div", { className: "group" },
+      React.createElement("label", { htmlFor: "card-name" }, "CARDHOLDER NAME"),
+      React.createElement("input", {
+        id: "card-name",
+        placeholder: "JOHN HARVARD",
+        ref: input => this.cardName = input,
+        onInput: event => this.format('card-name', this.cardName, event),
+        onFocus: () => this.flip(false),
+        required: true })),
+
+
+      React.createElement("div", { className: "row" },
+      React.createElement("div", { className: "group" },
+      React.createElement("label", { htmlFor: "card-validity" }, "VALID THROUGH"),
+      React.createElement("div", { className: "validity" },
+      React.createElement("select", {
+        ref: select => this.cardMonth = select,
+        onChange: event => this.format('card-month', this.cardMonth, event),
+        onFocus: () => this.flip(false),
+        required: true },
+
+      React.createElement("option", { value: "", selected: true, hidden: true }, "Month"),
+      React.createElement("optgroup", { label: "Month" },
+      new Array(12).fill(1).map((el, index) => {
+        return (
+          React.createElement("option", {
+            key: `month-${index}`,
+            value: `${index + 1 < 10 ? `0${index + 1}` : index + 1}` },
+
+          index + 1 < 10 ? `0${index + 1}` : index + 1));
+
+
+      }))),
+
+
+      React.createElement("select", {
+        ref: select => this.cardYear = select,
+        onChange: event => this.format('card-year', this.cardYear, event),
+        onFocus: () => this.flip(false),
+        required: true },
+
+      React.createElement("option", { value: "", selected: true, hidden: true }, "Year"),
+      React.createElement("optgroup", { label: "Year" },
+      new Array(12).fill(1).map((el, index) => {
+        return (
+          React.createElement("option", {
+            key: `month-${index + parseInt(`${new Date().getFullYear()}`.slice(2, 4))}`,
+            value: `${index + parseInt(`${new Date().getFullYear()}`.slice(2, 4))}` },
+
+          index + parseInt(`${new Date().getFullYear()}`.slice(2, 4))));
+
+
+      }))))),
+
+
+
+
+      React.createElement("div", { className: "group" },
+      React.createElement("label", { htmlFor: "card-cvv" }, "CVV"),
+      React.createElement("input", {
+        id: "card-cvv",
+        placeholder: "123",
+        pattern: "[0-9]{3}",
+        maxLength: "3",
+        ref: input => this.cardCVV = input,
+        onInput: event => this.format('card-cvv', this.cardCVV, event),
+        onFocus: () => this.flip(true),
+        onBlur: () => this.flip(false),
+        required: true }))),
+
+
+
+      React.createElement("div", { className: "group" },
+      React.createElement("button", { type: "submit" }, "CHECKOUT")))) :
+
+
+
+
+
+      React.createElement("div", { className: "payment" },
+      !this.props.complete ?
+
+      React.createElement("div", { className: "trying" },
+      React.createElement("h4", null, "Processing payment..."),
+      React.createElement("div", { className: "loader" },
+      React.createElement("span", null),
+      React.createElement("span", null),
+      React.createElement("span", null))) :
+
+
+
+      React.createElement("div", null,
+      React.createElement("div", { className: "success" },
+      React.createElement("h4", null, "Success! Your order is on the way! You have been sent a confirmation email."),
+      React.createElement('a', {href: "/success"}, "SUCCESS"),
+      React.createElement("div", { className: "check" },
+      React.createElement("span", null), React.createElement("span", null)))))));
+
+
+
+
+
+
+
+
+
+
+  }}
+
+
+class Machine extends React.Component {
+  render() {
+    return (
+      React.createElement("div", { className: `machine ${this.props.processing ? 'active' : ''} ${this.props.complete ? 'complete' : ''}` },
+      React.createElement("div", { className: "body" },
+      React.createElement("div", { className: "visor" },
+      React.createElement("div", { className: "screen" })),
+
+      React.createElement("div", { className: "keypad" },
+      React.createElement("span", null), React.createElement("span", null), React.createElement("span", null), React.createElement("span", null), React.createElement("span", null), React.createElement("span", null), React.createElement("span", null), React.createElement("span", null), React.createElement("span", null), React.createElement("span", null), React.createElement("span", null), React.createElement("span", null)))));
+
+
+
+
+  }}
+
+
+class Checkout extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      flipped: false,
+      processing: false,
+      complete: false,
+      number: '',
+      name: '',
+      month: '',
+      year: '',
+      cvv: '' };
+
+  }
+
+  populate(field) {
+    this.setState(field);
+  }
+
+  flip(bool) {
+    this.setState({ flipped: bool });
+  }
+
+  process() {
+
+  }
+
+  render() {
+    return (
+      React.createElement("div", { className: "container" },
+      React.createElement("div", { className: "process" },
+      React.createElement(Machine, {
+        processing: this.state.processing,
+        complete: this.state.complete }),
+
+      React.createElement(Card, {
+        fields: this.state,
+        flipped: this.state.flipped,
+        processing: this.state.processing,
+        complete: this.state.complete })),
+
+
+      React.createElement(Form, {
+        processing: this.state.processing,
+        complete: this.state.complete,
+        onFormSubmit: () => {
+          this.setState({ processing: true });
+
+          setTimeout(() => {
+            this.setState({ complete: true });
+          }, 5000);
+        },
+        onFormInput: this.populate.bind(this),
+        onFlip: this.flip.bind(this) })));
+  }}
+
+
+ReactDOM.render(React.createElement(Checkout, null), document.querySelector('#checkout'));
+      //# sourceURL=pen.js
+    </script>
+</body>
+</html>

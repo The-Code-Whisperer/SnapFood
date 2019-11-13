@@ -54,9 +54,8 @@ def about():
 
 
 @app.route("/success")
-@login_required
 def success():
-    return render_template("success.html", email=email)
+    return render_template("success.html")
 
 
 # test page

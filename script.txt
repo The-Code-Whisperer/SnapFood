@@ -1,0 +1,36 @@
+SCRIPT - Final Project Video
+
+{ Presenting ourselve }
+[ STEVEN ]
+     - Hey, this is our CS50 Final Project.
+     - My name is Steven Kim. I am from Canada.
+[ KEWIN ]
+     - My name is Anthony Kewin. I am from Brazil.
+
+{ Start Talking About Snapfood }
+[ KEWIN ]
+     - Our final project is a web-based program called Snapfood. Snapfood is a food delivery application that simulates an order.
+{ INDEX }
+[ STEVEN ]
+     - This is our index, here, users can know more about Snapfood and start their navigation.
+     ~ scrool down the index
+[ KEWIN ]
+     - In the about section, there is a button that redirects to our discussion.
+{ DISCUSSION }
+[ KEWIN ]
+     - Here, users can type their recommendations and opinions about our service.
+     ~ Return to index.
+{ INDEX }
+[ STEVEN ]
+     - Alright! Let's just get started making our order!
+[ KEWIN ]
+     - Yep! We can go to the restaurant menu and see what we want to order. But to order something, we must be logged in, so let's create an account in register.
+{ REGISTER }
+[ STEVEN ]
+     - Let's type some example name and password. (JohnHarvard)
+     ~ Proposal error in password. (123)
+     - Uhh! We must provide a stronger password. (123456)
+     ~ Done, Registered
+     - Here we are! Let's order something now.
+{ RESTAURANT }
+     - 
