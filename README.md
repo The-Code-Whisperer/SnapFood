@@ -1,3 +1,12 @@
+
+Works but is not deployed. Ask The-Code-Whisperer to deploy it and give you the link.
+
+Or clone the repo, install the cs50 library and flask, possibly others.
+
+flask run and you're good to go! Will deploy later for a convenient website link and then these three first README.md lines can be deleted and the below would apply instead.
+
+_________________________________________________________________
+
 <h2>SnapFood</h2>
 Food delivery web app for customers to have food delivered to their address, "operating" in Toronto.
 
